@@ -14,7 +14,7 @@ const CoupleHistory: React.FC = () => {
           scrollSnapAlign: "start",
         }}
       >
-        <AnimatedText variant="h5" color='primary' text='Prepare-se para o grande momento'/>
+        <AnimatedText variant="h5" color="primary" text="Prepare-se para o grande momento" />
       </Box>
     </AnimatedSection>
   );

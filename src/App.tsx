@@ -1,6 +1,5 @@
 import { Box, CssBaseline } from "@mui/material";
-import { HomePage } from "./pages";
-import CoupleHistory from "./pages/CoupleHistory";
+import { CoupleHistory, GiftList, HomePage, ImGoing, SaveTheDate } from "./pages";
 
 function App() {
   return (
@@ -10,11 +9,14 @@ function App() {
           width: "100vw",
           height: "100vh",
           overflowY: "scroll",
-          scrollSnapType: "y mandatory"
+          scrollSnapType: "y mandatory",
         }}
       >
         <HomePage />
         <CoupleHistory />
+        <ImGoing />
+        <GiftList />
+        <SaveTheDate />
       </Box>
     </CssBaseline>
   );
