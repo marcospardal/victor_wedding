@@ -12,9 +12,15 @@ const HomePage: React.FC = () => {
           justifyContent: "center",
           bgcolor: "background.main",
           scrollSnapAlign: "start",
+          px: { xs: 2, sm: 4, md: 6 },
         }}
       >
-        <AnimatedText color="primary" variant="h4" text="O Victor e a Raissa vão se casar"/>
+        <AnimatedText
+          color="primary"
+          text="O Victor e a Raissa vão se casar"
+          variant='h4'
+          textAlign="center"
+        />
       </Box>
     </AnimatedSection>
   );

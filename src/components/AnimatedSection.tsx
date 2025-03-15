@@ -11,11 +11,17 @@ interface AnimatedSectionProps extends PropsWithChildren {
 const AnimatedSection: React.FC<AnimatedSectionProps> = ({ animationKey = "fadeIn", children }) => {
   const animations = {
     slideFromLeft: slideFromLeft,
-    fadeIn: fadeIn
+    fadeIn: fadeIn,
   };
 
   return (
-    <motion.div initial="hidden" whileInView="visible" variants={animations[animationKey]} viewport={{ amount: 0.2 }}>
+    <motion.div 
+      initial="hidden" 
+      whileInView="visible" 
+      variants={animations[animationKey]} 
+      viewport={{ amount: 0.2 }}
+      style={{ width: "100%" }}
+    >
       {children}
     </motion.div>
   );

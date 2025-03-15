@@ -8,7 +8,17 @@ interface AnimatedTextProps extends TypographyProps {
 
 const AnimatedText: React.FC<AnimatedTextProps> = ({ text, ...props }) => {
   return (
-    <motion.div variants={sentence} initial="hidden" whileInView="visible" viewport={{ amount: 0.5 }} style={{ display: "flex" }}>
+    <motion.div
+      variants={sentence}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ amount: 0.4 }}
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+      }}
+    >
       {text.split(/( )/).map((char, index) => (
         <motion.span key={index} variants={letter}>
           <Typography {...props}>{char === " " ? "\u00A0" : char}</Typography>
