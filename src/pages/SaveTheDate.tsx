@@ -24,7 +24,7 @@ const SaveTheDate: React.FC = () => {
         />
         <AnimatedText
           color="primary"
-          text="Será dia X de Novembro de 2025"
+          text="Será dia 22 de Novembro de 2025"
           variant='h6'
           textAlign="center"
         />
