@@ -12,6 +12,9 @@ const theme = createTheme({
     secondary: {
       main: '#FFD700'
     },
+    text: {
+      primary: '#FFF'
+    }
   }
 });
 

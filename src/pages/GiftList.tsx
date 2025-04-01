@@ -1,7 +1,10 @@
-import { Box, Skeleton } from "@mui/material";
-import { AnimatedSection, AnimatedText } from "../components";
+import { Box } from "@mui/material";
+import { AnimatedSection, AnimatedText, GiftCard } from "../components";
+import useGiftList from "../lib/hooks/useGifList";
 
 const GiftList: React.FC = () => {
+  const { gifts, handleSelectGift } = useGiftList();
+
   return (
     <AnimatedSection>
       <Box
@@ -21,15 +24,17 @@ const GiftList: React.FC = () => {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)" },
+            gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)" },
             gap: { xs: 2, md: 4 },
             mt: 4,
             width: "100%",
-            maxWidth: "1200px",
+            maxWidth: window.innerWidth,
+            margin: "20px auto",
+            placeItems: "center",
           }}
         >
-          {Array.from({ length: 10 }).map((_, index) => (
-            <GiftCard key={index} />
+          {gifts.map((gift, index) => (
+            <GiftCard onSubmit={handleSelectGift} key={index} {...gift} />
           ))}
         </Box>
       </Box>
@@ -37,22 +42,5 @@ const GiftList: React.FC = () => {
   );
 };
 
-const GiftCard: React.FC = () => {
-  return (
-    <Box
-      sx={{
-        width: "100%",
-        maxWidth: 210,
-        mx: "auto",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Skeleton variant="rectangular" width="100%" height={118} />
-    </Box>
-  );
-};
 
 export default GiftList;
