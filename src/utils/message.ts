@@ -1,5 +1,3 @@
-import { Companions } from "../types/guest";
-
 const phoneNumber = "88993364626";
 
 function buildConfirmationMessage(guest: string, companions: Companions[]) {
