@@ -75,7 +75,7 @@ const CompanionInput: React.FC<CompanionInputProps> = ({ companion, onChange, on
 const GuestInput = styled(TextField)({
   ".MuiOutlinedInput-root": {
     paddingRight: 0,
-    maxWidth: "295px",
+    maxWidth: "255px",
   },
   marginLeft: "40px",
 });

@@ -58,7 +58,7 @@ const ImGoing: React.FC = () => {
         <TextField
           placeholder="Insira seu nome"
           onChange={handleChangeName}
-          style={{ minWidth: "295px" }}
+          style={{ minWidth: "255px" }}
           slotProps={{
             input: {
               sx: {

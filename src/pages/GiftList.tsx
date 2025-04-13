@@ -8,6 +8,7 @@ const GiftList: React.FC = () => {
   return (
     <AnimatedSection>
       <Box
+        id="gift-list-page"
         sx={{
           minHeight: "100vh",
           paddingTop: "100px",
@@ -20,7 +21,13 @@ const GiftList: React.FC = () => {
           px: { xs: 2, sm: 4, md: 6 },
         }}
       >
-        <AnimatedText fontFamily={'Outfit'} color="primary" text="Confira a lista de presentes dos noivos" variant="h4" textAlign="center" />
+        <AnimatedText
+          fontFamily={"Outfit"}
+          color="primary"
+          text="Confira a lista de presentes dos noivos"
+          variant="h4"
+          textAlign="center"
+        />
         <Box
           sx={{
             display: "grid",
@@ -41,6 +48,5 @@ const GiftList: React.FC = () => {
     </AnimatedSection>
   );
 };
-
 
 export default GiftList;

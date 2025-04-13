@@ -17,7 +17,7 @@ const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url
       }}
     >
       <img src={img_url} alt={`gift-${name}-img`} style={{ maxHeight: 150, maxWidth: 150, minHeight: 150, alignSelf: "center" }} />
-      <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: '150px' }}>
+      <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "150px" }}>
         <Typography
           variant="h6"
           color="primary"
@@ -77,9 +77,15 @@ const SelectAmount: React.FC<AmountProps> = ({ maxQuantity, itemId, itemName, on
     onSubmit(itemId, currAmount, itemName);
   };
   return (
-    <Box display={"flex"} alignItems={"self-start"} sx={{ display: {
-      md: 'flex'
-    } }}>
+    <Box
+      display={"flex"}
+      alignItems={"self-start"}
+      sx={{
+        display: {
+          md: "flex",
+        },
+      }}
+    >
       <ButtonGroup color="primary">
         <IconButton onClick={handleClickAmount("remove")}>
           <Remove />
