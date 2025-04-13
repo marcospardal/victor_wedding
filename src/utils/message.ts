@@ -1,4 +1,4 @@
-const phoneNumber = "8899702957";
+const phoneNumber = "88999702957";
 
 function buildConfirmationMessage(guest: string, companions: Companions[]) {
   let finalMessage = `Eu, ${guest}, confirmo presença no casamento de Victor e Raissa, no dia 22 de novembro de 2025.`;
