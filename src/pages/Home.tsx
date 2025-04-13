@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
           paddingTop: "100px",
           alignItems: "center",
           justifyContent: "flex-end",
-          paddingBottom: '54px',
+          paddingBottom: '64px',
           bgcolor: "background.default",
           scrollSnapAlign: "start",
           px: { xs: 2, sm: 4, md: 6 },
