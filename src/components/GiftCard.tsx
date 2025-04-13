@@ -6,18 +6,37 @@ type GifCardProps = Gift & {
   onSubmit: (giftId: string, currAmount: number, giftName: string) => void;
 };
 
-const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url, id, onSubmit }) => {
+const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url, id, price, onSubmit }) => {
   return (
     <GiftContainer
       sx={{
         minWidth: {
-          lg: "400px",
+          lg: "410px",
           xs: "300px",
         },
       }}
     >
-      <img src={img_url} alt={`gift-${name}-img`} style={{ maxHeight: 150, maxWidth: 150, minHeight: 150, alignSelf: "center" }} />
-      <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "150px" }}>
+      <img
+        src={img_url}
+        alt={`gift-${name}-img`}
+        style={{
+          maxHeight: 150,
+          maxWidth: 150,
+          minHeight: 150,
+          alignSelf: "flex-start",
+          objectFit: "contain",
+          flexShrink: 0,
+        }}
+      />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          flex: 1,
+          gap: 1,
+        }}
+      >
         <Typography
           variant="h6"
           color="primary"
@@ -43,7 +62,23 @@ const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url
           {description}
         </Typography>
         {quantity ? (
-          <SelectAmount itemName={name} itemId={id} maxQuantity={quantity} onSubmit={onSubmit} />
+          <>
+            <Typography
+              color="primary"
+              sx={{
+                fontWeight: 500,
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              }).format(price)}
+            </Typography>
+            <SelectAmount itemName={name} itemId={id} maxQuantity={quantity} onSubmit={onSubmit} />
+          </>
         ) : (
           <Typography fontWeight={"bold"} color="primary">
             Esgotado :C
@@ -77,30 +112,32 @@ const SelectAmount: React.FC<AmountProps> = ({ maxQuantity, itemId, itemName, on
     onSubmit(itemId, currAmount, itemName);
   };
   return (
-    <Box
-      display={"flex"}
-      alignItems={"self-start"}
-      sx={{
-        display: {
-          md: "flex",
-        },
-      }}
-    >
-      <ButtonGroup color="primary">
-        <IconButton onClick={handleClickAmount("remove")}>
-          <Remove />
-        </IconButton>
-        <Typography variant="body2" alignSelf={"center"} color="primary">
-          {currAmount} / {maxQuantity}
-        </Typography>
-        <IconButton onClick={handleClickAmount("add")}>
-          <Add />
-        </IconButton>
-      </ButtonGroup>
-      <Button disabled={!currAmount} variant={currAmount ? "contained" : "text"} color="primary" onClick={handleSubmit}>
-        Confimar
-      </Button>
-    </Box>
+    <>
+      <Box
+        display={"flex"}
+        alignItems={"self-start"}
+        sx={{
+          display: {
+            md: "flex",
+          },
+        }}
+      >
+        <ButtonGroup color="primary">
+          <IconButton onClick={handleClickAmount("remove")}>
+            <Remove />
+          </IconButton>
+          <Typography variant="body2" alignSelf={"center"} color="primary">
+            {currAmount} / {maxQuantity}
+          </Typography>
+          <IconButton onClick={handleClickAmount("add")}>
+            <Add />
+          </IconButton>
+        </ButtonGroup>
+        <Button disabled={!currAmount} variant={currAmount ? "contained" : "text"} color="primary" onClick={handleSubmit}>
+          Confimar
+        </Button>
+      </Box>
+    </>
   );
 };
 

@@ -4,4 +4,5 @@ type Gift = {
   description: string;
   quantity: number;
   img_url: string;
+  price: number;
 }
