@@ -1,4 +1,4 @@
-const phoneNumber = "88999702957";
+const phoneNumber = "5588999702957"; // DDI + DDD + número (muito importante!)
 
 function buildConfirmationMessage(guest: string, companions: Companions[]) {
   let finalMessage = `Eu, ${guest}, confirmo presença no casamento de Victor e Raissa, no dia 22 de novembro de 2025.`;
@@ -17,11 +17,16 @@ function buildConfirmationMessage(guest: string, companions: Companions[]) {
 
   const isMobile = /iPhone|Android|iPad|iPod/i.test(navigator.userAgent);
 
-  const url = isMobile
-    ? `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`
-    : `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+  const mobileURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  const desktopURL = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
-  window.open(url);
+  // 📱 iPhone/Android → redireciona direto
+  if (isMobile) {
+    window.location.href = mobileURL;
+  } else {
+    // 💻 Desktop → abre em nova aba
+    window.open(desktopURL, "_blank");
+  }
 }
 
 export default buildConfirmationMessage;

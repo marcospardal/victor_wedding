@@ -19,7 +19,7 @@ const GiftList: React.FC = () => {
           bgcolor: "background.default",
           scrollSnapAlign: "start",
           px: { xs: 2, sm: 4, md: 6 },
-          paddingBottom: '70px'
+          paddingBottom: '170px'
         }}
       >
         <AnimatedText
