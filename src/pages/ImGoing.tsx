@@ -1,12 +1,15 @@
 import { useCallback, useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import { AnimatedSection, AnimatedText, CompanionInput } from "../components";
-import { Companions } from "../types/guest";
 import buildConfirmationMessage from "../utils/message";
+import useLocalStorage from "../lib/hooks/useLocalStorage";
 
 const ImGoing: React.FC = () => {
-  const [guest, setGuest] = useState("");
-  const [companions, setCompanions] = useState<Companions[]>([]);
+  const { saveItem, getItem } = useLocalStorage();
+  const registeredCompanions = getItem("companions");
+
+  const [guest, setGuest] = useState(getItem("mainGuest") || "");
+  const [companions, setCompanions] = useState<Companions[]>(registeredCompanions ? JSON.parse(registeredCompanions) : []);
 
   function handleChangeName(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setGuest(event.target.value);
@@ -52,13 +55,26 @@ const ImGoing: React.FC = () => {
         }}
       >
         <AnimatedText color="primary" text="Confirme sua presença!" variant="h4" textAlign="center" />
-        <TextField placeholder="Insira seu nome" onChange={handleChangeName} style={{ minWidth: "295px" }} />
+        <TextField
+          placeholder="Insira seu nome"
+          onChange={handleChangeName}
+          style={{ minWidth: "295px" }}
+          slotProps={{
+            input: {
+              sx: {
+                color: "#53583E",
+              },
+            },
+          }}
+          onBlur={() => saveItem("mainGuest", guest)}
+        />
         {companions.map((companion, index) => (
           <CompanionInput
             key={index}
             onRemove={() => handleRemoveCompanion(index)}
             companion={companion}
             onChange={(value, type) => handleChangeCompanion(value, type, index)}
+            onBlur={() => saveItem("companions", JSON.stringify(companions))}
           />
         ))}
         <Button disabled={!guest} onClick={handleAddCompanion}>
