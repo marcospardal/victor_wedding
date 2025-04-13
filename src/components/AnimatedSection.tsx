@@ -19,7 +19,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({ animationKey = "fadeI
       initial="hidden" 
       whileInView="visible" 
       variants={animations[animationKey]} 
-      viewport={{ amount: 0.05 }}
+      viewport={{ amount: 0.08 }}
     >
       {children}
     </motion.div>
