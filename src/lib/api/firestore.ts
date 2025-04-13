@@ -1,5 +1,5 @@
 import { db } from "./firebase";
-import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
+import { collection, getDocs, doc, updateDoc, addDoc } from "firebase/firestore";
 
 export const getData = async (collectionName: string): Promise<Gift[]> => {
   const snapshot = await getDocs(collection(db, collectionName));
@@ -14,3 +14,11 @@ export const updateItemTotal = async (collectionName: string, docId: string, dat
     console.log(error);
   }
 };
+
+export const saveGuestGift = async (guestConfirmation: GuestConfirmation) => {
+  try {
+    await addDoc(collection(db, 'lista_convidados'), guestConfirmation);
+  } catch (err) {
+    console.error(err);
+  }
+}

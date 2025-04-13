@@ -3,7 +3,7 @@ import { Box, Button, ButtonGroup, IconButton, styled, Typography } from "@mui/m
 import { useState } from "react";
 
 type GifCardProps = Gift & {
-  onSubmit: (docId: string, currAmount: number) => void;
+  onSubmit: (giftId: string, currAmount: number, giftName: string) => void;
 };
 
 const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url, id, onSubmit }) => {
@@ -11,15 +11,15 @@ const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url
     <GiftContainer
       sx={{
         minWidth: {
-          lg: '400px',
-          xs: '300px',
-        }
+          lg: "400px",
+          xs: "300px",
+        },
       }}
     >
-      <img src={img_url} alt={`gift-${name}-img`} style={{ maxHeight: 150, maxWidth: 150 }} />
-      <Box>
+      <img src={img_url} alt={`gift-${name}-img`} style={{ maxHeight: 150, maxWidth: 150, minHeight: 150, alignSelf: "center" }} />
+      <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: '150px' }}>
         <Typography
-          variant="h4"
+          variant="h6"
           color="primary"
           sx={{
             display: "-webkit-box",
@@ -31,7 +31,7 @@ const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url
           {name}
         </Typography>
         <Typography
-          variant="body2"
+          variant="caption"
           color="primary"
           sx={{
             display: "-webkit-box",
@@ -43,9 +43,11 @@ const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url
           {description}
         </Typography>
         {quantity ? (
-          <SelectAmount itemId={id} maxQuantity={quantity} onSubmit={onSubmit} />
+          <SelectAmount itemName={name} itemId={id} maxQuantity={quantity} onSubmit={onSubmit} />
         ) : (
-          <Typography fontWeight={'bold'} color="primary">Esgotado :C</Typography>
+          <Typography fontWeight={"bold"} color="primary">
+            Esgotado :C
+          </Typography>
         )}
       </Box>
     </GiftContainer>
@@ -55,10 +57,11 @@ const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url
 type AmountProps = {
   maxQuantity: number;
   itemId: string;
-  onSubmit: (docId: string, amount: number) => void;
+  itemName: string;
+  onSubmit: (docId: string, amount: number, itemName: string) => void;
 };
 
-const SelectAmount: React.FC<AmountProps> = ({ maxQuantity, itemId, onSubmit }) => {
+const SelectAmount: React.FC<AmountProps> = ({ maxQuantity, itemId, itemName, onSubmit }) => {
   const [currAmount, setCurrAmount] = useState<number>(0);
 
   const handleClickAmount = (opt: "remove" | "add") => () => {
@@ -71,24 +74,26 @@ const SelectAmount: React.FC<AmountProps> = ({ maxQuantity, itemId, onSubmit }) 
   };
 
   const handleSubmit = () => {
-    onSubmit(itemId, currAmount);
+    onSubmit(itemId, currAmount, itemName);
   };
   return (
-    <Box display={'flex'} flexDirection={'column'} alignItems={'self-start'}>
+    <Box display={"flex"} alignItems={"self-start"} sx={{ display: {
+      md: 'flex'
+    } }}>
       <ButtonGroup color="primary">
         <IconButton onClick={handleClickAmount("remove")}>
           <Remove />
         </IconButton>
-        <Typography variant="body2" alignSelf={'center'} color="primary">
+        <Typography variant="body2" alignSelf={"center"} color="primary">
           {currAmount} / {maxQuantity}
         </Typography>
         <IconButton onClick={handleClickAmount("add")}>
           <Add />
         </IconButton>
       </ButtonGroup>
-      <Button disabled={!currAmount} variant={currAmount ? 'contained' : 'text'} color="primary" onClick={handleSubmit}>
+      <Button disabled={!currAmount} variant={currAmount ? "contained" : "text"} color="primary" onClick={handleSubmit}>
         Confimar
-      </Button> 
+      </Button>
     </Box>
   );
 };
@@ -98,8 +103,8 @@ const GiftContainer = styled(Box)({
   mx: "auto",
   display: "flex",
   alignItems: "self-start",
-  backgroundColor: 'rgba(255, 255, 255, 0.7)',
-  padding: "10px",
+  backgroundColor: "rgba(255, 255, 255, 0.7)",
+  padding: "10px 15px",
   borderRadius: "8px",
   gap: "10px",
   minWidth: "300px",

@@ -20,7 +20,7 @@ const GiftList: React.FC = () => {
           px: { xs: 2, sm: 4, md: 6 },
         }}
       >
-        <AnimatedText color="primary" text="Confira abaixo a lista de presentes dos noivos" variant="h4" textAlign="center" />
+        <AnimatedText fontFamily={'Outfit'} color="primary" text="Confira a lista de presentes dos noivos" variant="h4" textAlign="center" />
         <Box
           sx={{
             display: "grid",
