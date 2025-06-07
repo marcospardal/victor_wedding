@@ -59,6 +59,7 @@ const ImGoing: React.FC = () => {
           placeholder="Insira seu nome"
           onChange={handleChangeName}
           style={{ minWidth: "255px" }}
+          value={guest}
           slotProps={{
             input: {
               sx: {
