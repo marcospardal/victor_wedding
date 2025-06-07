@@ -53,7 +53,6 @@ const GridItem: React.FC<GridItemProps> = ({ guest }) => {
     <Grid2
       size={{ xs: 12, md: 4 }}
       sx={{
-        height: { md: 200, xs: 150 },
         backgroundColor: "rgba(255, 255, 255, 0.7)",
         padding: "10px 15px",
         justifyContent: { xs: "center", md: "flex-start" },
