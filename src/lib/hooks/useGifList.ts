@@ -13,7 +13,7 @@ const useGiftList = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await getData(collectionName);
+    const data = await getData<Gift>(collectionName);
     setGifts(data);
   };
 

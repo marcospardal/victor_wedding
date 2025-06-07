@@ -1,9 +1,9 @@
 import { db } from "./firebase";
 import { collection, getDocs, doc, updateDoc, addDoc } from "firebase/firestore";
 
-export const getData = async (collectionName: string): Promise<Gift[]> => {
+export async function getData<T>(collectionName: string): Promise<T[]> {
   const snapshot = await getDocs(collection(db, collectionName));
-  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }) as Gift);
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }) as T);
 };
 
 export const updateItemTotal = async (collectionName: string, docId: string, data: Record<string, number | string>) => {

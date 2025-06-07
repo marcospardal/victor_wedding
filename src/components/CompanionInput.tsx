@@ -45,7 +45,10 @@ const CompanionInput: React.FC<CompanionInputProps> = ({ companion, onChange, on
                     id="demo-simple-select"
                     value={companion.type}
                     label="Tipo"
-                    onChange={(event) => onChange(event.target.value, "type")}
+                    onChange={(event) => {
+                      onChange(event.target.value, "type");
+                      onBlur?.();
+                    }}
                     slotProps={{
                       input: {
                         sx: {
@@ -54,10 +57,18 @@ const CompanionInput: React.FC<CompanionInputProps> = ({ companion, onChange, on
                       },
                     }}
                   >
-                    <MenuItem sx={{ color: "#53583E" }} value={CompanionType.CHILD}>Filho</MenuItem>
-                    <MenuItem sx={{ color: "#53583E" }} value={CompanionType.FAMILY}>Família</MenuItem>
-                    <MenuItem sx={{ color: "#53583E" }} value={CompanionType.PARENT}>Pai/Mãe</MenuItem>
-                    <MenuItem sx={{ color: "#53583E" }} value={CompanionType.SPOUSE}>Cônjuge</MenuItem>
+                    <MenuItem sx={{ color: "#53583E" }} value={CompanionType.CHILD}>
+                      Filho
+                    </MenuItem>
+                    <MenuItem sx={{ color: "#53583E" }} value={CompanionType.FAMILY}>
+                      Família
+                    </MenuItem>
+                    <MenuItem sx={{ color: "#53583E" }} value={CompanionType.PARENT}>
+                      Pai/Mãe
+                    </MenuItem>
+                    <MenuItem sx={{ color: "#53583E" }} value={CompanionType.SPOUSE}>
+                      Cônjuge
+                    </MenuItem>
                   </Select>
                 </FormControl>
               </InputAdornment>

@@ -1,5 +1,5 @@
 import { Box, CssBaseline } from "@mui/material";
-import { CoupleHistory, GiftList, GuestManual, HomePage, ImGoing, SaveTheDate } from "./pages";
+import { CoupleHistory, GiftList, GuestManual, HomePage, ImGoing } from "./pages";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <ImGoing />
         <GiftList />
         <GuestManual />
-        <SaveTheDate />
+        {/* <SaveTheDate /> */}
       </Box>
     </CssBaseline>
   );
