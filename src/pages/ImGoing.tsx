@@ -86,8 +86,8 @@ const ImGoing: React.FC = () => {
           fontSize="88px"
           textAlign="center"
           fontFamily={"Bacalisties"}
-          sx={{ marginBottom: "220px" }}
         />
+        <div style={{ height: "220px" }} />
         <AnimatedText
           color="primary"
           text="22 | Novembro | 2025"
