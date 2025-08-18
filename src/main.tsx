@@ -19,6 +19,12 @@ createRoot(document.getElementById('root')!).render(
             src: url('/fonts/Bacalisties.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
+          },
+          @font-face {
+            font-family: 'Coldiac';
+            src: url('/fonts/Coldiac.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
           }
         `}
       />

@@ -4,14 +4,21 @@ import { AnimatedSection, AnimatedText, CompanionInput } from "../components";
 import buildConfirmationMessage from "../utils/message";
 import useLocalStorage from "../lib/hooks/useLocalStorage";
 
+import RVIcon from "/RV.png";
+import PlantIcon from "/plant.png";
+
 const ImGoing: React.FC = () => {
   const { saveItem, getItem } = useLocalStorage();
   const registeredCompanions = getItem("companions");
 
   const [guest, setGuest] = useState(getItem("mainGuest") || "");
-  const [companions, setCompanions] = useState<Companions[]>(registeredCompanions ? JSON.parse(registeredCompanions) : []);
+  const [companions, setCompanions] = useState<Companions[]>(
+    registeredCompanions ? JSON.parse(registeredCompanions) : []
+  );
 
-  function handleChangeName(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChangeName(
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
     setGuest(event.target.value);
   }
 
@@ -37,7 +44,19 @@ const ImGoing: React.FC = () => {
     buildConfirmationMessage(guest, companions);
   }
 
-  const canConfirm = Boolean(guest && companions.every((c) => c.name && c.type));
+  const canConfirm = Boolean(
+    guest && companions.every((c) => c.name && c.type)
+  );
+
+  const renderCormorantText = (value: string) => (
+    <AnimatedText
+      color="primary"
+      text={value}
+      fontSize="16px"
+      textAlign="center"
+      fontFamily={"Cormorant Garamond"}
+    />
+  );
 
   return (
     <AnimatedSection>
@@ -52,9 +71,59 @@ const ImGoing: React.FC = () => {
           scrollSnapAlign: "start",
           px: { xs: 2, sm: 4, md: 6 },
           gap: "10px",
+          padding: "156px 0",
         }}
       >
-        <AnimatedText color="primary" text="Confirme sua presença!" variant="h4" textAlign="center" />
+        <img src={PlantIcon} style={{ margin: "0 0 156px" }} />
+        <AnimatedText
+          color="primary"
+          text="Raissa e Victor"
+          fontSize="88px"
+          textAlign="center"
+          fontFamily={"Bacalisties"}
+        />
+        <AnimatedText
+          color="primary"
+          text="22 | Novembro | 2025"
+          fontFamily={"Coldiac"}
+          fontSize="16px"
+          textAlign="center"
+        />
+        <img
+          src={RVIcon}
+          style={{ height: "300px", width: "300px", margin: "180px 0 40px" }}
+        />
+        <AnimatedText
+          color="primary"
+          text="Seja bem vindo"
+          variant="h4"
+          textAlign="center"
+          fontFamily={"Bacalisties"}
+          sx={{ marginBottom: "72px" }}
+        />
+        {renderCormorantText(
+          "Se você está aqui, é porque faz parte da nossa história! E que história, não é mesmo? Somos a prova viva do cuidado e do amor do nosso Senhor!"
+        )}
+        {renderCormorantText(
+          "E como a felicidade é muito mais gostosa quando compartilhada, criamos esse site para dividir alguns detalhes do nosso dia com você."
+        )}
+        {renderCormorantText(
+          "Um lembrete muito importante: é imprescindível que você confirme a sua presença! Para isso, contamos com sua ajuda clicando no menu “Confirme sua Presença” e informando sobre sua presença à nossa cerimonialista."
+        )}
+        {renderCormorantText(
+          "Caso queira nos presentear, disponibilizamos mais abaixo uma lista digital 100% segura, com algumas opções!"
+        )}
+        {renderCormorantText(
+          "Contamos com seu amor, sua oração e sua presença em nosso grande dia!"
+        )}
+        {renderCormorantText("Com amor,")}
+        <AnimatedText
+          color="primary"
+          text="Raissa e Victor"
+          fontSize="34px"
+          textAlign="center"
+          fontFamily={"Bacalisties"}
+        />
         <TextField
           placeholder="Insira seu nome"
           onChange={handleChangeName}
@@ -64,6 +133,7 @@ const ImGoing: React.FC = () => {
             input: {
               sx: {
                 color: "#53583E",
+                marginTop: "70px",
               },
             },
           }}
@@ -74,14 +144,20 @@ const ImGoing: React.FC = () => {
             key={index}
             onRemove={() => handleRemoveCompanion(index)}
             companion={companion}
-            onChange={(value, type) => handleChangeCompanion(value, type, index)}
+            onChange={(value, type) =>
+              handleChangeCompanion(value, type, index)
+            }
             onBlur={() => saveItem("companions", JSON.stringify(companions))}
           />
         ))}
         <Button disabled={!guest} onClick={handleAddCompanion}>
           Adicionar acompanhante
         </Button>
-        <Button disabled={!canConfirm} variant="contained" onClick={handleConfirm}>
+        <Button
+          disabled={!canConfirm}
+          variant="contained"
+          onClick={handleConfirm}
+        >
           Confirmar
         </Button>
       </Box>
