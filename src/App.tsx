@@ -17,7 +17,6 @@ function App() {
         <ImGoing />
         <GiftList />
         <GuestManual />
-        {/* <SaveTheDate /> */}
       </Box>
     </CssBaseline>
   );
