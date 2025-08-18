@@ -52,7 +52,12 @@ const ImGoing: React.FC = () => {
     <AnimatedText
       color="primary"
       text={value}
-      fontSize="16px"
+      sx={{
+        fontSize: {
+          xs: "16px",
+          md: "32px",
+        },
+      }}
       textAlign="center"
       fontFamily={"Cormorant Garamond"}
     />
@@ -81,6 +86,7 @@ const ImGoing: React.FC = () => {
           fontSize="88px"
           textAlign="center"
           fontFamily={"Bacalisties"}
+          sx={{ marginBottom: "220px" }}
         />
         <AnimatedText
           color="primary"
@@ -104,18 +110,23 @@ const ImGoing: React.FC = () => {
         {renderCormorantText(
           "Se você está aqui, é porque faz parte da nossa história! E que história, não é mesmo? Somos a prova viva do cuidado e do amor do nosso Senhor!"
         )}
+        <div style={{ height: "40px" }} />
         {renderCormorantText(
           "E como a felicidade é muito mais gostosa quando compartilhada, criamos esse site para dividir alguns detalhes do nosso dia com você."
         )}
+        <div style={{ height: "40px" }} />
         {renderCormorantText(
           "Um lembrete muito importante: é imprescindível que você confirme a sua presença! Para isso, contamos com sua ajuda clicando no menu “Confirme sua Presença” e informando sobre sua presença à nossa cerimonialista."
         )}
+        <div style={{ height: "40px" }} />
         {renderCormorantText(
           "Caso queira nos presentear, disponibilizamos mais abaixo uma lista digital 100% segura, com algumas opções!"
         )}
+        <div style={{ height: "40px" }} />
         {renderCormorantText(
           "Contamos com seu amor, sua oração e sua presença em nosso grande dia!"
         )}
+        <div style={{ height: "40px" }} />
         {renderCormorantText("Com amor,")}
         <AnimatedText
           color="primary"
