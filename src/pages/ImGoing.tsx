@@ -74,7 +74,7 @@ const ImGoing: React.FC = () => {
         scrollSnapAlign: "start",
         px: { xs: 2, sm: 4, md: 6 },
         gap: "10px",
-        paddingBottom: "156px",
+        paddingBottom: "200px",
       }}
     >
       <Box
