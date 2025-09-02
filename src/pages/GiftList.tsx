@@ -15,19 +15,50 @@ const GiftList: React.FC = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "start",
-        bgcolor: "background.default",
+        background: "#66694c",
         scrollSnapAlign: "start",
         px: { xs: 2, sm: 4, md: 6 },
         paddingBottom: "170px",
       }}
     >
-      <AnimatedText
-        fontFamily={"Outfit"}
-        color="primary"
-        text="Confira a lista de presentes dos noivos"
-        variant="h4"
-        textAlign="center"
-      />
+      <Box
+        sx={{
+          display: "flex",
+          padding: "72px 20px",
+          textAlign: "center",
+          flexDirection: "column",
+          gap: "60px",
+          
+          margin: "0 -20px",
+        }}
+      >
+        <AnimatedText
+          fontFamily={"Bacalisties"}
+          color="white"
+          text="Lista de presentes"
+          variant="h4"
+          textAlign="center"
+          sx={{
+            fontSize: {
+              xs: "37px",
+              md: "70px",
+            },
+          }}
+        />
+        <AnimatedText
+          fontFamily={"Cormorant Garamond"}
+          color="white"
+          text="Decidimos fazer uma Lista 100% online. Caso queiram nos presentear, é só escolher um item, selecionar a quantidade e confirmar. Observação: os valores indicados em cada produto têm caráter meramente referencial, servindo apenas como base. Fique à vontade para adquiri-los no estabelecimento de sua preferência."
+          variant="h4"
+          textAlign="center"
+          sx={{
+            fontSize: {
+              xs: "16px",
+              md: "32px",
+            },
+          }}
+        />
+      </Box>
       <Box
         sx={{
           display: "grid",

@@ -1,12 +1,27 @@
 import { Add, Remove } from "@mui/icons-material";
-import { Box, Button, ButtonGroup, IconButton, styled, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  IconButton,
+  styled,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 
 type GifCardProps = Gift & {
   onSubmit: (giftId: string, currAmount: number, giftName: string) => void;
 };
 
-const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url, id, price, onSubmit }) => {
+const GiftCard: React.FC<GifCardProps> = ({
+  description,
+  name,
+  quantity,
+  img_url,
+  id,
+  price,
+  onSubmit,
+}) => {
   return (
     <GiftContainer
       sx={{
@@ -16,17 +31,9 @@ const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url
         },
       }}
     >
-      <img
+      <GiftImage
         src={img_url}
         alt={`gift-${name}-img`}
-        style={{
-          maxHeight: 150,
-          maxWidth: 150,
-          minHeight: 150,
-          alignSelf: "flex-start",
-          objectFit: "contain",
-          flexShrink: 0,
-        }}
       />
       <Box
         sx={{
@@ -77,7 +84,12 @@ const GiftCard: React.FC<GifCardProps> = ({ description, name, quantity, img_url
                 currency: "BRL",
               }).format(price)}
             </Typography>
-            <SelectAmount itemName={name} itemId={id} maxQuantity={quantity} onSubmit={onSubmit} />
+            <SelectAmount
+              itemName={name}
+              itemId={id}
+              maxQuantity={quantity}
+              onSubmit={onSubmit}
+            />
           </>
         ) : (
           <Typography fontWeight={"bold"} color="primary">
@@ -96,7 +108,12 @@ type AmountProps = {
   onSubmit: (docId: string, amount: number, itemName: string) => void;
 };
 
-const SelectAmount: React.FC<AmountProps> = ({ maxQuantity, itemId, itemName, onSubmit }) => {
+const SelectAmount: React.FC<AmountProps> = ({
+  maxQuantity,
+  itemId,
+  itemName,
+  onSubmit,
+}) => {
   const [currAmount, setCurrAmount] = useState<number>(0);
 
   const handleClickAmount = (opt: "remove" | "add") => () => {
@@ -133,7 +150,12 @@ const SelectAmount: React.FC<AmountProps> = ({ maxQuantity, itemId, itemName, on
             <Add />
           </IconButton>
         </ButtonGroup>
-        <Button disabled={!currAmount} variant={currAmount ? "contained" : "text"} color="primary" onClick={handleSubmit}>
+        <Button
+          disabled={!currAmount}
+          variant={currAmount ? "contained" : "text"}
+          color="primary"
+          onClick={handleSubmit}
+        >
           Confimar
         </Button>
       </Box>
@@ -141,7 +163,7 @@ const SelectAmount: React.FC<AmountProps> = ({ maxQuantity, itemId, itemName, on
   );
 };
 
-const GiftContainer = styled(Box)({
+const GiftContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   mx: "auto",
   display: "flex",
@@ -153,6 +175,22 @@ const GiftContainer = styled(Box)({
   minWidth: "300px",
   maxWidth: "300px",
   overflow: "hidden",
-});
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  },
+}));
+
+const GiftImage = styled("img")(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    maxHeight: "100%",
+    maxWidth: "100%",
+  },
+  maxHeight: 150,
+  maxWidth: 150,
+  minHeight: 150,
+  alignSelf: "flex-start",
+  objectFit: "contain",
+  flexShrink: 0,
+}));
 
 export default GiftCard;
