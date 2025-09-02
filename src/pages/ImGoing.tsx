@@ -78,19 +78,19 @@ const ImGoing: React.FC = () => {
       }}
     >
       <Box
-        sx={{ position: "relative", height: "1500px", marginBottom: "72px" }}
+        sx={{ position: "relative", height: "800px", marginBottom: "72px" }}
       >
         <img
           src={"/images/background.jpeg"}
           style={{
             width: window.innerWidth,
-            height: "1500px",
+            height: "800px",
             objectFit: "cover",
           }}
         />
         <Box
           sx={{
-            bottom: "200px",
+            bottom: "100px",
             position: "absolute",
             textAlign: "center",
             width: "100%",
