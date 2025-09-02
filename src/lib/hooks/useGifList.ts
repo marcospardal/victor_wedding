@@ -14,7 +14,7 @@ const useGiftList = () => {
 
   const fetchData = async () => {
     const data = await getData<Gift>(collectionName);
-    setGifts(data);
+    setGifts(data.sort((a, b) => a.price < b.price ? -1 : 1));
   };
 
   const handleSelectGift = async (docId: string, currAmount: number, giftName: string) => {
