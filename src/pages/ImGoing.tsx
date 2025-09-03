@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, styled, TextField } from "@mui/material";
 import { AnimatedText, CompanionInput } from "../components";
 import buildConfirmationMessage from "../utils/message";
 import useLocalStorage from "../lib/hooks/useLocalStorage";
@@ -77,15 +77,8 @@ const ImGoing: React.FC = () => {
         paddingBottom: "250px",
       }}
     >
-      <Box sx={{ position: "relative", height: "800px", marginBottom: "72px" }}>
-        <img
-          src={"/images/background.jpeg"}
-          style={{
-            width: window.innerWidth,
-            height: "800px",
-            objectFit: "cover",
-          }}
-        />
+      <Header>
+        <CoupleImage src={"/images/background.jpeg"} />
         <Box
           sx={{
             bottom: "10px",
@@ -121,7 +114,7 @@ const ImGoing: React.FC = () => {
             }}
           />
         </Box>
-      </Box>
+      </Header>
 
       <AnimatedText
         color="primary"
@@ -223,5 +216,23 @@ const ImGoing: React.FC = () => {
     </Box>
   );
 };
+
+const CoupleImage = styled("img")(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    height: "800px",
+  },
+  width: window.innerWidth,
+  height: "1500px",
+  objectFit: "cover",
+}));
+
+const Header = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    height: "800px",
+  },
+  position: "relative",
+  height: "1500px",
+  marginBottom: "72px",
+}));
 
 export default ImGoing;
