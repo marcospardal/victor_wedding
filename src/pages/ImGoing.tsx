@@ -74,12 +74,10 @@ const ImGoing: React.FC = () => {
         scrollSnapAlign: "start",
         px: { xs: 2, sm: 4, md: 6 },
         gap: "10px",
-        paddingBottom: "200px",
+        paddingBottom: "250px",
       }}
     >
-      <Box
-        sx={{ position: "relative", height: "800px", marginBottom: "72px" }}
-      >
+      <Box sx={{ position: "relative", height: "800px", marginBottom: "72px" }}>
         <img
           src={"/images/background.jpeg"}
           style={{
@@ -90,7 +88,7 @@ const ImGoing: React.FC = () => {
         />
         <Box
           sx={{
-            bottom: "100px",
+            bottom: "10px",
             position: "absolute",
             textAlign: "center",
             width: "100%",
@@ -102,29 +100,29 @@ const ImGoing: React.FC = () => {
             textAlign="center"
             fontFamily={"Bacalisties"}
             sx={{
-              marginBottom: "72px",
               fontSize: {
                 xs: "48px",
                 md: "88px",
               },
             }}
           />
+          <AnimatedText
+            color="white"
+            text="22 | Novembro | 2025"
+            fontFamily={"Coldiac"}
+            fontSize="16px"
+            textAlign="center"
+            sx={{
+              fontSize: {
+                xs: "27px",
+                md: "44px",
+              },
+              marginBottom: "60px",
+            }}
+          />
         </Box>
       </Box>
-      <AnimatedText
-        color="primary"
-        text="22 | Novembro | 2025"
-        fontFamily={"Coldiac"}
-        fontSize="16px"
-        textAlign="center"
-        sx={{
-          fontSize: {
-            xs: "27px",
-            md: "44px",
-          },
-          marginBottom: "120px",
-        }}
-      />
+
       <AnimatedText
         color="primary"
         text="Seja bem vindo"

@@ -1,5 +1,5 @@
 import { Box, CssBaseline } from "@mui/material";
-import { GiftList, GuestManual, HomePage, ImGoing } from "./pages";
+import { GiftList, GuestManual, ImGoing } from "./pages";
 
 function App() {
   return (
@@ -12,7 +12,6 @@ function App() {
           scrollSnapType: "y mandatory",
         }}
       >
-        <HomePage />
         <ImGoing />
         <GiftList />
         <GuestManual />
