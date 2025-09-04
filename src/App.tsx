@@ -9,7 +9,6 @@ function App() {
           width: "100vw",
           height: "100vh",
           overflowY: "scroll",
-          scrollSnapType: "y mandatory",
         }}
       >
         <ImGoing />

@@ -71,7 +71,6 @@ const ImGoing: React.FC = () => {
         alignItems: "center",
         justifyContent: "center",
         bgcolor: "background.main",
-        scrollSnapAlign: "start",
         px: { xs: 2, sm: 4, md: 6 },
         gap: "10px",
         paddingBottom: "250px",

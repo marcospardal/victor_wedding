@@ -16,7 +16,6 @@ const GiftList: React.FC = () => {
         alignItems: "center",
         justifyContent: "start",
         background: "#66694c",
-        scrollSnapAlign: "start",
         px: { xs: 2, sm: 4, md: 6 },
         paddingBottom: "170px",
       }}

@@ -23,7 +23,6 @@ const GuestManual: React.FC = () => {
         alignItems: "center",
         paddingTop: "100px",
         bgcolor: "background.main",
-        scrollSnapAlign: "start",
         px: { xs: 2, sm: 4, md: 6 },
         gap: "20px",
       }}
