@@ -54,7 +54,7 @@ const ReceptionInfo: React.FC = () => {
         <AnimatedText
           color="primary"
           text={
-            "Nossa cerimônia acontecerá na igreja São Francisco e recepção no espaço domus. Pedimos que chegue um pouquinho antes das 21:00, pois começaremos pontualmente."
+            "Nossa cerimônia acontecerá na igreja São Francisco e recepção no espaço domus. Pedimos que chegue um pouquinho antes das 20:00."
           }
           sx={{
             fontSize: {
