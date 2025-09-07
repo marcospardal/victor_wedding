@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { AnimatedText, GiftCard } from "../components";
 import useGiftList from "../lib/hooks/useGifList";
 
@@ -27,7 +27,7 @@ const GiftList: React.FC = () => {
           textAlign: "center",
           flexDirection: "column",
           gap: "60px",
-          
+
           margin: "0 -20px",
         }}
       >
@@ -57,6 +57,19 @@ const GiftList: React.FC = () => {
             },
           }}
         />
+        <AnimatedText
+          fontFamily={"Cormorant Garamond"}
+          color="white"
+          text="Endereço para entrega dos presentes: Rua Coronel Antônio Frota , 418. CEP: 62010120. Armazém Vitor Linhares"
+          variant="h4"
+          textAlign="center"
+          sx={{
+            fontSize: {
+              xs: "16px",
+              md: "32px",
+            },
+          }}
+        />
       </Box>
       <Box
         sx={{
@@ -77,6 +90,27 @@ const GiftList: React.FC = () => {
         {gifts.map((gift, index) => (
           <GiftCard onSubmit={handleSelectGift} key={index} {...gift} />
         ))}
+      </Box>
+      <Box display={"flex"} flexDirection={"column"} alignItems="center" gap={"20px"} mt={"60px"}>
+        <AnimatedText
+          fontFamily={"Cormorant Garamond"}
+          color="white"
+          text="Caso não tenha encontrado o presente ideal, mas mesmo assim ainda quiser contribuir, pode nos enviar qualquer quantia a partir desse QRCode."
+          variant="h4"
+          textAlign="center"
+          sx={{
+            fontSize: {
+              xs: "16px",
+              md: "32px",
+            },
+          }}
+        />
+        <img src={"/images/gift-code.jpeg"} style={{ height: 250, width: 250 }} />
+        <span>
+          <Typography fontFamily={"Cormorant Garamond"}>Nome: Victor Emanuel Sousa Linhares</Typography>
+          <Typography fontFamily={"Cormorant Garamond"}>Banco: Nubank</Typography>
+          <Typography fontFamily={"Cormorant Garamond"}>Chave: victoremanuelfla@gmail.com</Typography>
+        </span>
       </Box>
     </Box>
   );

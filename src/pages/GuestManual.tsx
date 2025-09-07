@@ -64,7 +64,7 @@ const GuestManual: React.FC = () => {
             color="primary"
             sx={{ fontSize: { xs: "16px", md: "32px" } }}
           >
-            Sugerimos a todos o traje esporte fino.
+            Sugerimos a todos o traje passeio completo.
           </Typography>
           <Typography
             fontFamily={"Cormorant Garamond"}

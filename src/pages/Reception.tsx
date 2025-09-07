@@ -53,9 +53,7 @@ const ReceptionInfo: React.FC = () => {
         <div style={{ height: "100px" }} />
         <AnimatedText
           color="primary"
-          text={
-            "Nossa cerimônia acontecerá na igreja São Francisco e recepção no espaço domus. Pedimos que chegue um pouquinho antes das 20:00."
-          }
+          text={"Nossa cerimônia acontecerá na igreja São Francisco às 20:00 e logo em seguida a recepção no espaço domus."}
           sx={{
             fontSize: {
               xs: "16px",
@@ -84,10 +82,7 @@ const ReceptionInfo: React.FC = () => {
               objectFit: "cover",
             }}
           />
-          <img
-            src={"/images/reception.jpeg"}
-            style={{ minWidth: "50%", maxWidth: "90%" }}
-          />
+          <img src={"/images/reception.jpeg"} style={{ minWidth: "50%", maxWidth: "90%" }} />
         </Box>
       </Box>
       <Box
@@ -98,14 +93,8 @@ const ReceptionInfo: React.FC = () => {
           justifyContent: "center",
         }}
       >
-        <img
-          src="/images/puzzle_1.png"
-          style={{ maxWidth: window.innerWidth }}
-        />
-        <img
-          src="/images/puzzle_2.png"
-          style={{ maxWidth: window.innerWidth }}
-        />
+        <img src="/images/puzzle_1.png" style={{ maxWidth: window.innerWidth }} />
+        <img src="/images/puzzle_2.png" style={{ maxWidth: window.innerWidth }} />
       </Box>
     </>
   );
