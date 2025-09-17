@@ -5,6 +5,7 @@ import buildConfirmationMessage from "../utils/message";
 import useLocalStorage from "../lib/hooks/useLocalStorage";
 
 import ReceptionInfo from "./Reception";
+import { confirmPresence } from "../lib/api/firestore";
 
 const ImGoing: React.FC = () => {
   const { saveItem, getItem } = useLocalStorage();
@@ -41,6 +42,12 @@ const ImGoing: React.FC = () => {
 
   function handleConfirm() {
     buildConfirmationMessage(guest, companions);
+    confirmPresence({
+      companions,
+      giftAmount: 0,
+      giftName: "Não informado",
+      guestName: guest,
+    });
   }
 
   const canConfirm = Boolean(

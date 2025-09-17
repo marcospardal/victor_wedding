@@ -39,7 +39,6 @@ const useGiftList = () => {
         giftName,
       });
     }
-    
   }
 
   return {
