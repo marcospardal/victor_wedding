@@ -31,10 +31,7 @@ const GiftCard: React.FC<GifCardProps> = ({
         },
       }}
     >
-      <GiftImage
-        src={img_url}
-        alt={`gift-${name}-img`}
-      />
+      <GiftImage src={img_url} alt={`gift-${name}-img`} />
       <Box
         sx={{
           display: "flex",
@@ -130,15 +127,7 @@ const SelectAmount: React.FC<AmountProps> = ({
   };
   return (
     <>
-      <Box
-        display={"flex"}
-        alignItems={"self-start"}
-        sx={{
-          display: {
-            md: "flex",
-          },
-        }}
-      >
+      <Box display={"flex"} alignItems={"center"}>
         <ButtonGroup color="primary">
           <IconButton onClick={handleClickAmount("remove")}>
             <Remove />

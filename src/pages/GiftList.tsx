@@ -1,9 +1,25 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Snackbar, Typography } from "@mui/material";
 import { AnimatedText, GiftCard } from "../components";
+
 import useGiftList from "../lib/hooks/useGifList";
+import { useState } from "react";
 
 const GiftList: React.FC = () => {
   const { gifts, handleSelectGift } = useGiftList();
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+
+  const handleAddGift = (
+    giftId: string,
+    currAmount: number,
+    giftName: string
+  ) => {
+    try {
+      handleSelectGift(giftId, currAmount, giftName);
+      setSnackbarMessage("Presente selecionado!");
+    } catch {
+      setSnackbarMessage("Erro ao seleciona presente!");
+    }
+  };
 
   return (
     <Box
@@ -88,10 +104,16 @@ const GiftList: React.FC = () => {
         }}
       >
         {gifts.map((gift, index) => (
-          <GiftCard onSubmit={handleSelectGift} key={index} {...gift} />
+          <GiftCard onSubmit={handleAddGift} key={index} {...gift} />
         ))}
       </Box>
-      <Box display={"flex"} flexDirection={"column"} alignItems="center" gap={"20px"} mt={"60px"}>
+      <Box
+        display={"flex"}
+        flexDirection={"column"}
+        alignItems="center"
+        gap={"20px"}
+        mt={"60px"}
+      >
         <AnimatedText
           fontFamily={"Cormorant Garamond"}
           color="white"
@@ -105,13 +127,29 @@ const GiftList: React.FC = () => {
             },
           }}
         />
-        <img src={"/images/gift-code.jpeg"} style={{ height: 250, width: 250 }} />
+        <img
+          src={"/images/gift-code.jpeg"}
+          style={{ height: 250, width: 250 }}
+        />
         <span>
-          <Typography fontFamily={"Cormorant Garamond"}>Nome: Victor Emanuel Sousa Linhares</Typography>
-          <Typography fontFamily={"Cormorant Garamond"}>Banco: Nubank</Typography>
-          <Typography fontFamily={"Cormorant Garamond"}>Chave: victoremanuelfla@gmail.com</Typography>
+          <Typography fontFamily={"Cormorant Garamond"}>
+            Nome: Victor Emanuel Sousa Linhares
+          </Typography>
+          <Typography fontFamily={"Cormorant Garamond"}>
+            Banco: Nubank
+          </Typography>
+          <Typography fontFamily={"Cormorant Garamond"}>
+            Chave: victoremanuelfla@gmail.com
+          </Typography>
         </span>
       </Box>
+      <Snackbar
+        open={Boolean(snackbarMessage)}
+        onClose={() => setSnackbarMessage("")}
+        autoHideDuration={5000}
+        message={snackbarMessage}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      />
     </Box>
   );
 };
